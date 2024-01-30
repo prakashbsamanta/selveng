@@ -1,4 +1,4 @@
-package com.selveng;
+package com.selveng.tests;
 
 import java.time.Duration;
 import java.util.List;

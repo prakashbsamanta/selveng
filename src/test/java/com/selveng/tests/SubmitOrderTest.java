@@ -1,4 +1,4 @@
-package com.selveng;
+package com.selveng.tests;
 
 import com.selveng.pageObjects.*;
 import org.openqa.selenium.WebDriver;
@@ -16,9 +16,7 @@ public class SubmitOrderTest {
         String productName = "ZARA COAT 3";
 
         ChromeOptions options = new ChromeOptions();
-        options.addArguments(
-                "--start-maximized"
-        );
+        options.addArguments("--start-maximized");
         WebDriver driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
