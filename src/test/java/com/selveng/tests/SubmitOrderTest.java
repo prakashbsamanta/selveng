@@ -18,6 +18,8 @@ public class SubmitOrderTest extends BaseTest {
     @Test
     public void submitOrder() throws IOException {
         String productName = "ZARA COAT 3";
+//        String username=prop.getProperty(username);
+//        String loginPassword=prop.getProperty(password);
         ProductCatalogue productCatalogue = loginPage.loginApplication("modestlamport@justzeus.com", "V@VjcZz3xyGD2H%j");
 
         List<WebElement> productsList = productCatalogue.getProductsList();

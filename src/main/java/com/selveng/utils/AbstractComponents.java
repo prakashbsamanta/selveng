@@ -35,4 +35,9 @@ public class AbstractComponents {
     public Boolean verifyProductMatchFromList(String productToMath, List<WebElement> productsList) {
         return productsList.stream().anyMatch(product -> product.getText().equalsIgnoreCase(productToMath));
     }
+
+    public String getContainerText(WebElement toastContainer) {
+        waitForElementToAppear(toastContainer);
+        return toastContainer.getText().trim();
+    }
 }
