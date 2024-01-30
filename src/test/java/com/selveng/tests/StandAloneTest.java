@@ -29,7 +29,7 @@ public class StandAloneTest {
         LoginPage loginPage = new LoginPage(driver);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://rahulshettyacademy.com/client");
-//        loginPage.userEmails.sendKeys("modestlamport@justzeus.com");
+        driver.findElement(By.id("userEmail")).sendKeys("modestlamport@justzeus.com");
         driver.findElement(By.id("userPassword")).sendKeys("V@VjcZz3xyGD2H%j");
         driver.findElement(By.id("login")).click();
 

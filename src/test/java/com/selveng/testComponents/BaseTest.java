@@ -53,7 +53,7 @@ public class BaseTest {
         return driver;
     }
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public LoginPage launchApplication() throws IOException {
         driver = initializeDriver();
         loginPage = new LoginPage(driver);
@@ -63,7 +63,7 @@ public class BaseTest {
         return loginPage;
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown(){
         driver.quit();
     }

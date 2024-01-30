@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="MyTestSuite">
+    <test name="Submit Order Tests">
+        <classes>
+            <class name="com.selveng.tests.SubmitOrderTest"/>
+        </classes>
+    </test>
+<!--    <test name="StandAlone Tests">-->
+<!--        <classes>-->
+<!--            <class name="com.selveng.tests.StandAloneTest"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+    <test name="Error Validation Tests">
+        <classes>
+            <class name="com.selveng.tests.ErrorValidationTests"/>
+        </classes>
+    </test>
+</suite>

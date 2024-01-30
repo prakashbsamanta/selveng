@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class ErrorValidationTests extends BaseTest {
 
-    @Test
+    @Test(groups = {"errorHandling"})
     public void validatingLoginErrors() {
         String validationError = "Incorrect email or password.";
         loginPage.loginApplication("abc@abc.com", "abcdefg");
