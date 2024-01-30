@@ -6,13 +6,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
 public class ProductCatalogue extends AbstractComponents {
+    WebDriver driver;
     public ProductCatalogue(WebDriver driver) {
         super(driver);
+        this.driver=driver;
         PageFactory.initElements(driver, this);
     }
 
@@ -44,10 +45,11 @@ public class ProductCatalogue extends AbstractComponents {
 
     }
 
-    public void addProductToCart(String productName) {
+    public NavigationHeader addProductToCart(String productName) {
         WebElement product = getProductByName(productName);
         product.findElement(addToCart).click();
         waitForElementToAppear(toastContainer);
         waitForElementToDisappear(spinner);
+        return new NavigationHeader(driver);
     }
 }

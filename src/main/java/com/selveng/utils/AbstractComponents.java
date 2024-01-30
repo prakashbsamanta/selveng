@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class AbstractComponents {
     WebDriver driver;
@@ -22,8 +23,16 @@ public class AbstractComponents {
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(findBy));
     }
 
+    public void waitForElementToAppear(WebElement element) {
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
     public void waitForElementToDisappear(WebElement element) {
         wait.until(ExpectedConditions.invisibilityOf(element));
 
+    }
+
+    public Boolean verifyProductMatchFromList(String productToMath, List<WebElement> productsList) {
+        return productsList.stream().anyMatch(product -> product.getText().equalsIgnoreCase(productToMath));
     }
 }
