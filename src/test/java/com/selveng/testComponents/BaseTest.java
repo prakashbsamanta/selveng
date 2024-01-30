@@ -6,6 +6,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -16,6 +18,8 @@ public class BaseTest {
     public WebDriver driver;
     public Properties prop;
     public FileInputStream fis;
+
+    public LoginPage loginPage;
 
     public BaseTest() {
         prop = new Properties();
@@ -47,12 +51,19 @@ public class BaseTest {
         return driver;
     }
 
+    @BeforeMethod
     public LoginPage launchApplication() throws IOException {
         driver = initializeDriver();
-        LoginPage loginPage = new LoginPage(driver);
+        loginPage = new LoginPage(driver);
         String appURL = prop.getProperty("appURL");
 
         loginPage.goTo(appURL);
         return loginPage;
+    }
+
+    @AfterMethod
+    public void tearDown(){
+//        driver.close();
+        driver.quit();
     }
 }

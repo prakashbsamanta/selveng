@@ -18,8 +18,6 @@ public class SubmitOrderTest extends BaseTest {
     @Test
     public void submitOrder() throws IOException {
         String productName = "ZARA COAT 3";
-
-        LoginPage loginPage = launchApplication();
         ProductCatalogue productCatalogue = loginPage.loginApplication("modestlamport@justzeus.com", "V@VjcZz3xyGD2H%j");
 
         List<WebElement> productsList = productCatalogue.getProductsList();
@@ -37,6 +35,5 @@ public class SubmitOrderTest extends BaseTest {
         String orderConfirmationText = orderConfirmation.getOrderConfirmText();
         Assert.assertEquals(orderConfirmationText, "THANKYOU FOR THE ORDER.");
 
-        driver.quit();
     }
 }
