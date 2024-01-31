@@ -16,9 +16,17 @@ public class NavigationHeader {
     @FindBy(css = "button[routerlink='/dashboard/cart']")
     WebElement buttonCart;
 
+    @FindBy(css = "button[routerlink='/dashboard/myorders']")
+    WebElement buttonOrders;
+
 
     public CartPage goToCartPage() {
         buttonCart.click();
         return new CartPage(driver);
+    }
+
+    public OrdersPage goToOrdersPage() {
+        buttonOrders.click();
+        return new OrdersPage(driver);
     }
 }

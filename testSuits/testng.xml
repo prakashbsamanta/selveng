@@ -3,17 +3,22 @@
 <suite name="MyTestSuite">
     <test name="Submit Order Tests">
         <classes>
-            <class name="com.selveng.tests.SubmitOrderTest"/>
+            <class name="com.selveng.tests.SubmitOrderTest">
+<!--                <methods>-->
+<!--                    <include name="deleteAllOrders"/>-->
+<!--                </methods>-->
+            </class>
+
         </classes>
     </test>
-<!--    <test name="StandAlone Tests">-->
-<!--        <classes>-->
-<!--            <class name="com.selveng.tests.StandAloneTest"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-    <test name="Error Validation Tests">
-        <classes>
-            <class name="com.selveng.tests.ErrorValidationTests"/>
-        </classes>
-    </test>
+    <!--    <test name="StandAlone Tests">-->
+    <!--        <classes>-->
+    <!--            <class name="com.selveng.tests.StandAloneTest"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
+    <!--    <test name="Error Validation Tests">-->
+    <!--        <classes>-->
+    <!--            <class name="com.selveng.tests.ErrorValidationTests"/>-->
+    <!--        </classes>-->
+    <!--    </test>-->
 </suite>

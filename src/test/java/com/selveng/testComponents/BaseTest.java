@@ -34,7 +34,7 @@ public class BaseTest {
     }
 
 
-    public WebDriver initializeDriver() throws IOException {
+    public WebDriver initializeDriver() {
         String browserName = prop.getProperty("browser");
 
         if (browserName.equalsIgnoreCase("chrome")) {
@@ -53,7 +53,7 @@ public class BaseTest {
         return driver;
     }
 
-    @BeforeMethod(alwaysRun = true)
+    @BeforeClass(alwaysRun = true)
     public LoginPage launchApplication() throws IOException {
         driver = initializeDriver();
         loginPage = new LoginPage(driver);
@@ -63,7 +63,7 @@ public class BaseTest {
         return loginPage;
     }
 
-    @AfterMethod(alwaysRun = true)
+    @AfterClass(alwaysRun = true)
     public void tearDown(){
         driver.quit();
     }
