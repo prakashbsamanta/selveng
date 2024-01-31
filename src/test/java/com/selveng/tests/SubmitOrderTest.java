@@ -2,15 +2,10 @@ package com.selveng.tests;
 
 import com.selveng.pageObjects.*;
 import com.selveng.testComponents.BaseTest;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
-import java.time.Duration;
 import java.util.List;
 
 public class SubmitOrderTest extends BaseTest {
@@ -20,7 +15,7 @@ public class SubmitOrderTest extends BaseTest {
 
 
     @Test
-    public void submitOrder() throws IOException {
+    public void submitOrder() {
         ProductCatalogue productCatalogue = loginPage.loginApplication("modestlamport@justzeus.com", "V@VjcZz3xyGD2H%j");
 
         List<WebElement> productsList = productCatalogue.getProductsList();
@@ -48,7 +43,7 @@ public class SubmitOrderTest extends BaseTest {
     }
 
     @Test(dependsOnMethods = {"verifyOrders"})
-    public void deleteAllOrders() throws InterruptedException {
+    public void deleteAllOrders() {
         String noOrdersLeft = "You have No Orders to show at this time.\nPlease Visit Back Us";
         NavigationHeader navigationHeader = new NavigationHeader(driver);
 

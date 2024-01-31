@@ -1,14 +1,17 @@
 package com.selveng.pageObjects;
 
 import com.selveng.utils.AbstractComponents;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
 public class LoginPage extends AbstractComponents {
     WebDriver driver;
+
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -37,8 +40,14 @@ public class LoginPage extends AbstractComponents {
     public WebElement emailRequiredError;
 
     public ProductCatalogue loginApplication(String email, String password) {
+        userEmail.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        userEmail.sendKeys(Keys.chord(Keys.BACK_SPACE));
         userEmail.sendKeys(email);
+
+        userPassword.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        userPassword.sendKeys(Keys.chord(Keys.BACK_SPACE));
         userPassword.sendKeys(password);
+
         loginSubmitBtn.click();
         return new ProductCatalogue(driver);
     }
@@ -49,5 +58,9 @@ public class LoginPage extends AbstractComponents {
 
     public String getToastContainerText(WebElement element) {
         return getContainerText(element);
+    }
+
+    public String getAttribute(){
+        return userEmail.getAttribute("class");
     }
 }
