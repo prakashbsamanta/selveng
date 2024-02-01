@@ -42,3 +42,6 @@ Thumbs.db
 
 # Maven Wrapper
 .mvn/wrapper/
+
+#Screenshots
+src/resources/screenshots/*
