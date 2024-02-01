@@ -1,9 +1,13 @@
 package com.selveng.tests;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.selveng.testComponents.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import java.util.HashMap;
+import java.util.List;
 
 public class ErrorValidationTests extends BaseTest {
 
@@ -15,18 +19,20 @@ public class ErrorValidationTests extends BaseTest {
     }
 
     @Test(dataProvider = "validatingInputFieldErrorsData")
-    public void validatingInputFieldErrors(String userEmail, String userPassword, String expectedErrorText) {
-        loginPage.loginApplication(userEmail, userPassword);
+    public void validatingInputFieldErrors(HashMap<String, String> dataMap) {
+        System.out.println("Test Desc: " + dataMap.get("testDesc"));
+        loginPage.loginApplication(dataMap.get("username"), dataMap.get("userPassword"));
         String errorText = loginPage.getToastContainerText(loginPage.emailRequiredError);
-        Assert.assertEquals(errorText, expectedErrorText);
+        Assert.assertEquals(errorText, dataMap.get("errorText"));
     }
 
     @DataProvider
-    private Object[][] validatingInputFieldErrorsData() {
+    private Object[][] validatingInputFieldErrorsData() throws JsonProcessingException {
+        List<HashMap<String, String>> dataObj = getJsonDataToMap("src/test/java/com/selveng/data/dataSet1.json");
         return new Object[][]{
-                {"", "password2", "*Email is required"},
-                {"user-email", "password3", "*Enter Valid Email"},
-                {"user@email.com", "", "*Password is required"}
+                {dataObj.get(0)},
+                {dataObj.get(1)},
+                {dataObj.get(2)},
         };
     }
 }

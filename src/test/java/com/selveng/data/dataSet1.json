@@ -1,0 +1,20 @@
+[
+  {
+    "testDesc": "Empty User Name",
+    "username": "",
+    "userPassword": "password2",
+    "errorText": "*Email is required"
+  },
+  {
+    "testDesc": "Invalid User Name",
+    "username": "user-email",
+    "userPassword": "password3",
+    "errorText": "*Enter Valid Email"
+  },
+  {
+    "testDesc": "Empty User Password",
+    "username": "user@email.com",
+    "userPassword": "",
+    "errorText": "*Password is required"
+  }
+]
