@@ -21,7 +21,7 @@ public class ErrorValidationTests extends BaseTest {
     public void validatingLoginErrors() {
         loginPage.loginApplication("abc@abc.com", "password1");
         String errorText = loginPage.getToastContainerText(loginPage.toastContainerText);
-        Assert.assertEquals(errorText, "Incorrect email or password.");
+        Assert.assertEquals(errorText, "Incorrect email or password..");
     }
 
     @Test(dataProvider = "validatingInputFieldErrorsData")
@@ -43,13 +43,5 @@ public class ErrorValidationTests extends BaseTest {
         };
     }
 
-    public void getScreenShot(String testCaseName) throws IOException {
-        Instant instant = Instant.now();
-        long timeStampInMilli = instant.toEpochMilli();
-        TakesScreenshot screenshot = (TakesScreenshot) driver;
-        File ss = screenshot.getScreenshotAs(OutputType.FILE);
-        File file = new File("src/resources/screenshots/" + testCaseName + "_" + timeStampInMilli + ".png");
-        FileUtils.copyFile(ss, file);
-        System.out.println("Screenshot saved at: " + file);
-    }
+
 }

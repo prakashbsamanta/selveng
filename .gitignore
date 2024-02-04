@@ -44,4 +44,4 @@ Thumbs.db
 .mvn/wrapper/
 
 #Screenshots
-src/resources/screenshots/*
+src/resources/*

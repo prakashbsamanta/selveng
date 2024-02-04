@@ -7,11 +7,11 @@
             <include name="errorHandling" />
         </run>
     </groups>
-    <test name="Submit Order Tests">
-        <classes>
-            <class name="com.selveng.tests.SubmitOrderTest"/>
-        </classes>
-    </test>
+<!--    <test name="Submit Order Tests">-->
+<!--        <classes>-->
+<!--            <class name="com.selveng.tests.SubmitOrderTest"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 <!--    <test name="StandAlone Tests">-->
 <!--        <classes>-->
 <!--            <class name="com.selveng.tests.StandAloneTest"/>-->

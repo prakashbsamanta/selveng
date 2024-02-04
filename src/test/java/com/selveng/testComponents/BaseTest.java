@@ -5,21 +5,23 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.selveng.pageObjects.LoginPage;
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
+import java.time.Instant;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
@@ -30,6 +32,8 @@ public class BaseTest {
     public FileInputStream fis;
 
     public LoginPage loginPage;
+    Instant instant = Instant.now();
+    public long timeStampInMilli = instant.toEpochMilli();
 
     public BaseTest() {
         prop = new Properties();
@@ -43,12 +47,16 @@ public class BaseTest {
 
 
     public WebDriver initializeDriver() {
-        String browserName = prop.getProperty("browser");
+        String browserName = System.getProperty("browser") != null ? System.getProperty("browser") : prop.getProperty("browser");
 
-        if (browserName.equalsIgnoreCase("chrome")) {
+        if (browserName.contains("chrome")) {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--start-maximized");
+            if(browserName.contains("headless")){
+                options.addArguments("headless");
+            }
             driver = new ChromeDriver(options);
+            driver.manage().window().setSize(new Dimension(1440,900));
         } else if (browserName.equalsIgnoreCase("firefox")) {
             FirefoxOptions options = new FirefoxOptions();
             options.addArguments("--start-maximized");
@@ -91,5 +99,14 @@ public class BaseTest {
         List<HashMap<String, String>> data = mapper.readValue(jsonContent, new TypeReference<List<HashMap<String, String>>>() {
         });
         return data;
+    }
+
+    public String getScreenShot(String testCaseName) throws IOException {
+
+        TakesScreenshot screenshot = (TakesScreenshot) driver;
+        File ss = screenshot.getScreenshotAs(OutputType.FILE);
+        File file = new File("src/resources/screenshots/" + testCaseName + "_" + timeStampInMilli + ".png");
+        FileUtils.copyFile(ss, file);
+        return file.toString();
     }
 }

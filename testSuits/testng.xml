@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite parallel="classes" thread-count="5" name="MyTestSuite">
+<suite parallel="tests" thread-count="5" name="MyTestSuite">
+    <listeners>
+        <listener class-name="com.selveng.testComponents.Listeners"/>
+    </listeners>
     <test name="Submit Order Tests">
         <classes>
             <class name="com.selveng.tests.SubmitOrderTest">
